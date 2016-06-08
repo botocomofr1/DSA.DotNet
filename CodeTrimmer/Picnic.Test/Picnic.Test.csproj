@@ -53,6 +53,12 @@
     <Compile Include="ValidAnagramTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Picnic\Picnic.csproj">
+      <Project>{466989d1-711c-4e39-81fe-41af66da2e40}</Project>
+      <Name>Picnic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
