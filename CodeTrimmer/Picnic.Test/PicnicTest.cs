@@ -1,10 +1,10 @@
 ﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System;
 namespace Picnic.Test
 {
     [TestClass]
-    public class SanityTest
+    public class PicnicTest
     {
         [TestMethod]
         public void ValidAnagramTest()
@@ -24,6 +24,16 @@ namespace Picnic.Test
             Assert.IsFalse(result,
                 string.Format("Failed to perform neg test source: {0} target {1}", source, target));
 
+        }
+
+        [TestMethod]
+        public void FibonacciTest()
+        { 
+            var fab = new Fibonacci ();
+            Assert.AreEqual(0, fab.Calculate(0), "Failed to calcluate Fab 0");
+            Assert.AreEqual(1, fab.Calculate(1), "Failed to calcluate Fab 1");
+            Assert.AreEqual(55, fab.Calculate(10), "Failed to calcluate Fab 10");
+            Assert.AreEqual(6765, fab.Calculate(20), "Failed to calcluate Fab 20");
         }
     }
 }
