@@ -24,7 +24,11 @@ namespace Picnic
             if (mem.Keys.Contains(n))
                 return mem[n];
             else
-                return Calculate(n - 1) + Calculate(n - 2);
+            {
+                int fab = Calculate(n - 1) + Calculate(n - 2);
+                mem.Add(n, fab);
+                return fab;
+            }
         }
     }
 }
