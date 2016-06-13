@@ -15,6 +15,8 @@ namespace Picnic
             root = null;
         }
 
+        
+
         public bool Delete(int target)
         {
             bool deleted = false;
@@ -36,6 +38,26 @@ namespace Picnic
             }
             return deleted;
         }
+
+        private int Height(TreeNode treeNode)
+        {
+            if (treeNode == null)
+                return 0;
+            int leftHeight = 0;
+            if (treeNode.Left != null)
+            {
+                leftHeight = Height(treeNode.Left) + 1;
+            }
+            int rightHeight = 0;
+            if (treeNode.Right != null)
+            {
+                rightHeight = Height(treeNode.Right) + 1;
+            }
+
+            return leftHeight > rightHeight ? leftHeight : rightHeight;
+
+        }
+       
         private TreeNode FindSmallest(TreeNode startNode)
         {
             if (startNode == null)
