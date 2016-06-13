@@ -15,12 +15,59 @@ namespace Picnic
             root = null;
         }
 
+        public bool Delete(int target)
+        {
+            bool deleted = false;
+            if (root == null)
+            {
+                return false;
+            }
+     
+            if (root.Value == target)
+            {
+                if (root.Right != null)
+                {
+
+                    TreeNode smallest = FindSmallest(root.Right);
+
+                }
+                deleted = true;
+
+            }
+            return deleted;
+        }
+        private TreeNode FindSmallest(TreeNode startNode)
+        {
+            if (startNode == null)
+                return null;
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            q.Enqueue(startNode);
+            TreeNode p = startNode.Left;
+            while (q.Any())
+            {
+                TreeNode treeNode = q.Dequeue();
+                { 
+                    if (treeNode.Left != null && treeNode.Left.Left !=null)
+                        q.Enqueue(treeNode.Left);
+                    else if (treeNode.Left != null && treeNode.Left ==null)
+                    {
+
+                        return treeNode.Left;
+                    }
+           
+                }
+            }
+            return null;
+
+        }
         public void Insert(int target)
         {
+            
             if (root == null)
             {
                 root = new TreeNode();
                 root.Value = target;
+        
             }
             else
             {
@@ -33,10 +80,9 @@ namespace Picnic
                     {
                         if (node.Left == null)
                         {
-                            TreeNode n = new TreeNode();
-                            n.Value = target;
-                            node.Left = n;
-                            
+                            TreeNode newNode = new TreeNode();
+                            newNode.Value = target;
+                            node.Left = newNode;                           
                         }
                         else {
                             q.Enqueue(node.Left);
@@ -44,13 +90,11 @@ namespace Picnic
                     }
                     else
                     {
-
                         if (node.Right == null)
                         {
-                            TreeNode n = new TreeNode();
-                            n.Value = target;
-                            node.Right = n;
-
+                            TreeNode newNode = new TreeNode();
+                            newNode.Value = target;
+                            node.Right = newNode;
                         }
                         else {
                             q.Enqueue(node.Right);
@@ -63,17 +107,17 @@ namespace Picnic
 
         }
 
-        public bool DepFirstSearch(int target)
+        public TreeNode DepthFirstSearch(int target)
         {
             return DepthFirstSearch(root, target);
         }
 
-        private bool DepthFirstSearch(TreeNode startNode, int targert)
+        private TreeNode DepthFirstSearch(TreeNode startNode, int targert)
         {
             if (startNode == null)
-                return false;
+                return null;
             else if (startNode != null && startNode.Value == targert)
-                return true;
+                return startNode;
             else
             {
                 if (startNode.Left != null && startNode.Value > targert)
@@ -81,16 +125,16 @@ namespace Picnic
                 else if (startNode.Right != null && startNode.Value < targert)
                     return DepthFirstSearch(startNode.Right, targert);
                 else
-                    return false;
+                    return null;
             }
         }
 
 
-        public bool BreathFirstSearch(int target)
+        public TreeNode BreathFirstSearch(int target)
         {
             if (root ==null)
             {
-                return false;
+                return null;
             }
             Queue<TreeNode> q = new Queue<TreeNode>();
             q.Enqueue(root);
@@ -98,7 +142,7 @@ namespace Picnic
             {
                 TreeNode treeNode = q.Dequeue();
                 if (treeNode.Value == target)
-                    return true;
+                    return treeNode;
                 else
                 {
                     if (treeNode.Left != null &&  treeNode.Value > target)
@@ -107,7 +151,7 @@ namespace Picnic
                         q.Enqueue(treeNode.Right);
                 }
             }
-            return false;
+            return null;
         }
     }
 }
