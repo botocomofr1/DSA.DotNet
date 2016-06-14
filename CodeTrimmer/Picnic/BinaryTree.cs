@@ -19,24 +19,90 @@ namespace Picnic
 
         public bool Delete(int target)
         {
-            bool deleted = false;
             if (root == null)
             {
                 return false;
             }
-     
-            if (root.Value == target)
-            {
-                if (root.Right != null)
-                {
 
-                    TreeNode smallest = FindSmallest(root.Right);
+            TreeNode deletedNode = BreathFirstSearch(target);
+            if (deletedNode == null)
+                return false;
+            else
+            {
+                // No children case
+                if (deletedNode.Left == null && deletedNode.Right == null)
+                    deletedNode = null;
+                if (deletedNode.Left != null )
+                {
+                    TreeNode largest = FindLargest(deletedNode.Left);
+                    deletedNode.Value = largest.Value;
+                    largest = null;
 
                 }
-                deleted = true;
-
+                else
+                {
+                    TreeNode smallest = FindSmallest(deletedNode.Right);
+                    deletedNode.Value = smallest.Value;
+                    smallest = null;
+                }
+                return true;
             }
-            return deleted;
+
+        }
+
+        private TreeNode FindLargest(TreeNode startNode)
+        {
+            if (startNode == null)
+            {
+                return null;
+            }
+            else
+            {
+                Queue<TreeNode> queue = new Queue<TreeNode>();
+                queue.Enqueue(startNode);
+
+                while (queue.Any())
+                {
+                    TreeNode treeNode = queue.Dequeue();
+                    if (treeNode.Right == null)
+                    {
+                        return treeNode;
+                    }
+                    else
+                    {
+                        queue.Enqueue(treeNode.Right);
+                    }
+                }
+                return null;
+            }
+
+        }
+        private TreeNode FindSmallest(TreeNode startNode)
+        {
+            if (startNode == null)
+            {
+                return null;
+            }
+            else
+            {
+                Queue<TreeNode> queue = new Queue<TreeNode>();
+                queue.Enqueue(startNode);
+            
+                while (queue.Any())
+                {
+                    TreeNode treeNode = queue.Dequeue();
+                    if (treeNode.Left == null)
+                    {
+                        return treeNode;
+                    }
+                    else
+                    {
+                        queue.Enqueue(treeNode.Left);
+                    }
+                }
+                return null;
+            }
+
         }
 
         private int Height(TreeNode treeNode)
@@ -58,30 +124,7 @@ namespace Picnic
 
         }
        
-        private TreeNode FindSmallest(TreeNode startNode)
-        {
-            if (startNode == null)
-                return null;
-            Queue<TreeNode> q = new Queue<TreeNode>();
-            q.Enqueue(startNode);
-            TreeNode p = startNode.Left;
-            while (q.Any())
-            {
-                TreeNode treeNode = q.Dequeue();
-                { 
-                    if (treeNode.Left != null && treeNode.Left.Left !=null)
-                        q.Enqueue(treeNode.Left);
-                    else if (treeNode.Left != null && treeNode.Left ==null)
-                    {
 
-                        return treeNode.Left;
-                    }
-           
-                }
-            }
-            return null;
-
-        }
         public void Insert(int target)
         {
             
@@ -158,19 +201,19 @@ namespace Picnic
             {
                 return null;
             }
-            Queue<TreeNode> q = new Queue<TreeNode>();
-            q.Enqueue(root);
-            while (q.Any())
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Any())
             {
-                TreeNode treeNode = q.Dequeue();
+                TreeNode treeNode = queue.Dequeue();
                 if (treeNode.Value == target)
                     return treeNode;
                 else
                 {
                     if (treeNode.Left != null &&  treeNode.Value > target)
-                        q.Enqueue(treeNode.Left);
+                        queue.Enqueue(treeNode.Left);
                     if (treeNode.Right != null && treeNode.Value < target)
-                        q.Enqueue(treeNode.Right);
+                        queue.Enqueue(treeNode.Right);
                 }
             }
             return null;
