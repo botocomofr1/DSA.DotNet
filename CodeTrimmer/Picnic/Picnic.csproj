@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryTree.cs" />
-    <Compile Include="Factorial.cs" />
+    <Compile Include="Fibonacci.cs" />
     <Compile Include="ValidAnagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
