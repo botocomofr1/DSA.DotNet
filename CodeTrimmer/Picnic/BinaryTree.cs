@@ -15,8 +15,19 @@ namespace Picnic
             root = null;
         }
 
-        
+        protected void RotateRight(TreeNode startNode)
+        {
+            TreeNode newStartNode = startNode.Left;
+            startNode.Left = newStartNode.Right;
+            newStartNode.Right = startNode;
+        }
 
+        protected void RotateLeft(TreeNode startNode)
+        {
+            TreeNode newStartNode = startNode.Right;
+            startNode.Right = newStartNode.Left;
+            newStartNode.Left = startNode;
+        }
         public bool Delete(int target)
         {
             if (root == null)
@@ -105,23 +116,25 @@ namespace Picnic
 
         }
 
+
+        public int Height()
+        {
+           return  Height(root);
+        }
+
         private int Height(TreeNode treeNode)
         {
+ 
+
             if (treeNode == null)
+            {
                 return 0;
-            int leftHeight = 0;
-            if (treeNode.Left != null)
-            {
-                leftHeight = Height(treeNode.Left) + 1;
             }
-            int rightHeight = 0;
-            if (treeNode.Right != null)
+            else
             {
-                rightHeight = Height(treeNode.Right) + 1;
+                return 1+System.Math.Max(Height(treeNode.Left), Height(treeNode.Right));
             }
-
-            return leftHeight > rightHeight ? leftHeight : rightHeight;
-
+ 
         }
        
 
