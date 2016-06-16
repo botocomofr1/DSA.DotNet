@@ -28,6 +28,72 @@ namespace Picnic
             startNode.Right = newStartNode.Left;
             newStartNode.Left = startNode;
         }
+
+        public bool IsValidBST()
+        {
+            if (root == null)
+                return true;
+            else
+            {
+                return IsValidBST(root);
+
+            }
+        
+        }
+        protected bool IsValidBST(TreeNode treeNode)
+        {
+            if (treeNode == null)
+                return true;
+            else
+            {
+                if (treeNode.Left != null && treeNode.Right != null)
+                {
+                    if (!(treeNode.Value >= treeNode.Left.Value &&
+                        treeNode.Value <= treeNode.Right.Value))
+                        return false;
+
+                }else if (treeNode.Left != null && treeNode.Right == null)
+                {
+                    if (!(treeNode.Value >= treeNode.Left.Value))
+                        return false;
+                }
+                else 
+                {
+                    if (!(treeNode.Value <= treeNode.Right.Value))
+                        return false;
+                    
+                }
+                return IsValidBST(treeNode.Right) && IsValidBST(treeNode.Left);
+
+            }
+
+        }
+
+        public bool IsBalanceBST()
+        {
+            if (root == null)
+                return true;
+            int leftHeight = Height(root.Left);
+            int rightHeight = Height(root.Right);
+            if (leftHeight != rightHeight)
+                return false;
+            else
+                return IsBalanceBST(root.Left) && IsBalanceBST(root.Right);
+            
+        }
+
+        protected bool IsBalanceBST(TreeNode tnode)
+        {
+            if (tnode == null)
+                return true;
+            else
+            {
+                if (Height(tnode.Left) != Height(tnode.Right))
+                    return false;
+                else
+                    return IsBalanceBST(root.Right) && IsBalanceBST(root.Right);
+            }
+        }
         public bool Delete(int target)
         {
             if (root == null)
