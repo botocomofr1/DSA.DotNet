@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Picnic.Test", "Picnic.Test\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6EDC8704-245E-4F29-9DF1-5469402365FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unleisure", "Unleisure\Unleisure.csproj", "{378218D4-DE73-4418-A6F6-567A9740CB50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6EDC8704-245E-4F29-9DF1-5469402365FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EDC8704-245E-4F29-9DF1-5469402365FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EDC8704-245E-4F29-9DF1-5469402365FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{378218D4-DE73-4418-A6F6-567A9740CB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{378218D4-DE73-4418-A6F6-567A9740CB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{378218D4-DE73-4418-A6F6-567A9740CB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{378218D4-DE73-4418-A6F6-567A9740CB50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
