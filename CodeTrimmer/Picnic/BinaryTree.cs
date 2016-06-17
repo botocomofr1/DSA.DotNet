@@ -18,15 +18,25 @@ namespace Picnic
         protected void RotateRight(TreeNode startNode)
         {
             TreeNode newStartNode = startNode.Left;
+            newStartNode.Parent = startNode.Parent;
+
             startNode.Left = newStartNode.Right;
+            startNode.Left.Parent = startNode;
+
             newStartNode.Right = startNode;
+            startNode.Parent = newStartNode;
         }
 
         protected void RotateLeft(TreeNode startNode)
         {
             TreeNode newStartNode = startNode.Right;
+            newStartNode.Parent = startNode.Parent;
+
             startNode.Right = newStartNode.Left;
+            startNode.Right.Parent = startNode;
+
             newStartNode.Left = startNode;
+            startNode.Parent = newStartNode;
         }
 
         public bool IsValidBST()
@@ -112,7 +122,9 @@ namespace Picnic
                 if (deletedNode.Left != null )
                 {
                     TreeNode largest = FindLargest(deletedNode.Left);
+
                     deletedNode.Value = largest.Value;
+                    largest.Parent = null;
                     largest = null;
 
                 }
@@ -120,6 +132,7 @@ namespace Picnic
                 {
                     TreeNode smallest = FindSmallest(deletedNode.Right);
                     deletedNode.Value = smallest.Value;
+                    smallest.Parent = null;
                     smallest = null;
                 }
                 return true;
@@ -215,33 +228,34 @@ namespace Picnic
             }
             else
             {
+                TreeNode newNode = new TreeNode();
                 Queue<TreeNode> q = new Queue<TreeNode>();
                 q.Enqueue(root);
                 while (q.Any())
                 {
-                    TreeNode node = q.Dequeue();
-                    if (node.Value >= target)
+                    TreeNode currentNode = q.Dequeue();
+                    if (currentNode.Value >= target)
                     {
-                        if (node.Left == null)
+                        if (currentNode.Left == null)
                         {
-                            TreeNode newNode = new TreeNode();
-                            newNode.Value = target;
-                            node.Left = newNode;                           
+                            currentNode.Left = newNode;
+                            newNode.Parent = currentNode;                        
                         }
                         else {
-                            q.Enqueue(node.Left);
+                            q.Enqueue(currentNode.Left);
                         }
                     }
                     else
                     {
-                        if (node.Right == null)
+                        if (currentNode.Right == null)
                         {
-                            TreeNode newNode = new TreeNode();
-                            newNode.Value = target;
-                            node.Right = newNode;
+                        
+                       
+                            currentNode.Right = newNode;
+                            newNode.Parent = currentNode;
                         }
                         else {
-                            q.Enqueue(node.Right);
+                            q.Enqueue(currentNode.Right);
                         }
                     }
                }

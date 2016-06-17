@@ -24,6 +24,83 @@ namespace Unleisure
             }
 
         }
+        public void InsertWithParent(int target)
+        {
+
+            var newNode = new TreeNode();
+            newNode.Value = target;
+            if (root == null)
+                root = newNode;
+            else
+            {
+                Queue<TreeNode> queue = new Queue<TreeNode>();
+                queue.Enqueue(root);
+                while(queue.Count > 0)
+                {
+                    TreeNode parent = queue.Dequeue();
+                    if (parent.Value >= target)
+                    {
+                        if (parent.Left == null)
+                        {
+                            parent.Left = newNode;
+                            newNode.Parent = parent;
+                            TreeNode grandParent = parent.Parent;
+                            if (grandParent != null)
+                            {
+                                if (grandParent.Value >= parent.Value)
+                                {
+                                    // target is left of parent and parent is left of grandparent
+                                    RightRotate(grandParent);
+                                }
+                                else
+                                {
+                                    // target is left of parent and parent is right of granprent
+                                    RightRotate(parent);
+                                    LeftRotate(grandParent);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            queue.Enqueue(parent.Left);
+
+                        }
+
+
+                    }else
+                    {
+                        if (parent.Right == null)
+                        {
+                            parent.Right = newNode;
+                            newNode.Parent = parent;
+                            TreeNode grandParent = parent.Parent;
+                            if (grandParent != null)
+                            {
+                                if (grandParent.Value >= parent.Value)
+                                {
+                                    // target is left of parent and parent is left of grandparent
+                                    LeftRotate(grandParent);
+                                }
+                                else
+                                {
+                                    // target is left of parent and parent is right of granprent
+                                    LeftRotate(parent);
+                                    RightRotate(grandParent);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            queue.Enqueue(parent.Right);
+
+                        }
+
+
+                    }
+
+                }
+            }
+        }
 
         public void Insert(int target)
         {
