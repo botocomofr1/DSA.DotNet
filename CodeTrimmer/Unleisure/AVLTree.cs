@@ -224,39 +224,31 @@ namespace Unleisure
             } 
         }
 
-        protected void Adjust(TreeNode startNode)
-        {
-            if (startNode == null)
-                return;
 
-            if (Height(startNode.Left) - Height(startNode.Right) > 1)
-            {
-                RightRotate(startNode);
-
-            }else if (Height(startNode.Right) - Height(startNode.Left) > 1)
-            {
-                LeftRotate(startNode);
-            }else{
-                Adjust(startNode.Left);
-                Adjust(startNode.Right);
-
-            }
-
-        }
 
         protected void RightRotate(TreeNode startNode)
         {
-            TreeNode newP = startNode.Left;
-            startNode.Left = newP.Right;
-            newP.Right = startNode;
+            TreeNode newStartNode = startNode.Left;
+            newStartNode.Parent = startNode.Parent;
+
+            startNode.Left = newStartNode.Right;
+            startNode.Left.Parent = startNode;
+
+            newStartNode.Right = startNode;
+            startNode.Parent = newStartNode;
 
         }
 
         protected void LeftRotate(TreeNode startNode)
         {
-            TreeNode newP = startNode.Right;
-            startNode.Right = newP.Left;
-            newP.Right = startNode;
+            TreeNode newStartNode = startNode.Right;
+            newStartNode.Parent = startNode.Parent;
+
+            startNode.Right = newStartNode.Left;
+            startNode.Right.Parent = startNode;
+
+            newStartNode.Left = startNode;
+            startNode.Parent = newStartNode;
 
         }
     }
