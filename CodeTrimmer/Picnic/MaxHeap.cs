@@ -16,14 +16,18 @@ namespace Picnic
             heapValueList.Insert(0, int.MaxValue);
         }
 
-        public int GetMin()
+        public int Size()
+        {
+            return heapValueList.Count();
+        }
+
+        public int GetMax()
         {
             if (heapValueList.Count >= 1)
             {
                 int value = heapValueList[1];
 
                 Delete(value);
-                Heapify();
                 return value;
             }
             else
@@ -34,10 +38,10 @@ namespace Picnic
         {
             if (heapValueList.Count >= 1)
             {
-                int index = heapValueList.IndexOf(value);
-                int last = heapValueList.Count - 1;
-                heapValueList[index] = heapValueList[last];
-                heapValueList.Remove(last);
+                int deletedIndex = heapValueList.IndexOf(value);
+                int lastIndex = heapValueList.Count - 1;
+                heapValueList[deletedIndex] = heapValueList[lastIndex];
+                heapValueList.Remove(lastIndex);
                 Heapify();
             }
             else
@@ -68,7 +72,6 @@ namespace Picnic
                 currentIndex = parentIndex;
                 parentIndex = currentIndex;
             }
-
         }
 
     }

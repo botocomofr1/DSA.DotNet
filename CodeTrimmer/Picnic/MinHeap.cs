@@ -13,7 +13,11 @@ namespace Picnic
         public MinHeap()
         {
 
-            heapValueList.Insert(0, int.MaxValue);
+            heapValueList.Insert(0, int.MinValue);
+        }
+        public int Size()
+        {
+            return heapValueList.Count();
         }
 
         public int GetMin()
