@@ -27,7 +27,7 @@ namespace Picnic
                 else
                 {
                     int value = minHeap.GetMin();
-                    minHeap.Delete(value);
+                 
                     maxHeap.Insert(value);
                     minHeap.Insert(target);
                 }
@@ -41,7 +41,6 @@ namespace Picnic
                 else
                 {
                     int value = maxHeap.GetMax();
-                    maxHeap.Delete(value);
                     minHeap.Insert(value);
                     maxHeap.Insert(target);
                 }
@@ -55,7 +54,7 @@ namespace Picnic
                 else
                 {
                     int value = maxHeap.GetMax();
-                    maxHeap.Delete(value);
+
                     minHeap.Insert(value);
                     maxHeap.Insert(target);
                 }

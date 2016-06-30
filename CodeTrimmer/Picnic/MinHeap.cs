@@ -20,13 +20,26 @@ namespace Picnic
             return heapValueList.Count();
         }
 
+        public int Peak()
+        {
+            if (heapValueList.Count >= 1)
+            {
+                int value = heapValueList[1];
+                return value;
+            }
+            else
+                throw new Exception("Empty Heap");
+
+        }
+
         public int GetMin()
         {
             if (heapValueList.Count >= 1)
             {
                 int value = heapValueList[1];
-
-                Delete(value);
+                int last = heapValueList.Count - 1;
+                heapValueList[1] = heapValueList[last];
+                heapValueList.RemoveAt(last);
                 Heapify();
                 return value;
             }
@@ -34,21 +47,6 @@ namespace Picnic
                 throw new Exception("Empty Heap");
         }
 
-        public void Delete(int value)
-        {
-            if (heapValueList.Count >= 1)
-            {
-                int index = heapValueList.IndexOf(value);
-                int last = heapValueList.Count - 1;
-                heapValueList[index] = heapValueList[last];
-                heapValueList.Remove(last);
-                Heapify();
-            }
-            else
-            {
-                throw new Exception("Empty Heap");
-            }
-        }
 
         public void Insert(int value)
         {
@@ -58,8 +56,10 @@ namespace Picnic
         // Start from bottom and move the smallest upward
         protected void Heapify()
         {
-            int parentIndex = heapValueList.Count / 2;
-            int childIndex = heapValueList.Count - 1;
+
+            int childIndex = heapValueList.Count-1;
+            
+            int parentIndex = Convert.ToInt32(Math.Floor(Convert.ToDouble(childIndex / 2))); 
             while (parentIndex >= 1)
             {
                 if (heapValueList[childIndex] < heapValueList[parentIndex])
@@ -67,9 +67,15 @@ namespace Picnic
                     int tmp = heapValueList[parentIndex];
                     heapValueList[parentIndex] = heapValueList[childIndex];
                     heapValueList[childIndex] = tmp;
+                    childIndex = parentIndex;
+                    parentIndex = Convert.ToInt32(Math.Floor(Convert.ToDouble(childIndex / 2)));
                 }
-                childIndex = parentIndex;
-                parentIndex = childIndex;
+                else
+                {
+                    childIndex = childIndex - 1;
+                    parentIndex = Convert.ToInt32(Math.Floor(Convert.ToDouble(childIndex / 2)));
+                }
+                
             }
 
         }

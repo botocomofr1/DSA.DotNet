@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BinaryTree.cs" />
     <Compile Include="Fibonacci.cs" />
+    <Compile Include="LargestSumOfK.cs" />
     <Compile Include="LinkList.cs" />
     <Compile Include="MaxHeap.cs" />
     <Compile Include="MedianHeap.cs" />

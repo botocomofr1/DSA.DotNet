@@ -27,28 +27,15 @@ namespace Picnic
             {
                 int value = heapValueList[1];
 
-                Delete(value);
+                int lastIndex = heapValueList.Count - 1;
+                heapValueList[1] = heapValueList[lastIndex];
+                heapValueList.RemoveAt(lastIndex);
                 return value;
             }
             else
                 throw new Exception("Empty Heap");
         }
 
-        public void Delete(int value)
-        {
-            if (heapValueList.Count >= 1)
-            {
-                int deletedIndex = heapValueList.IndexOf(value);
-                int lastIndex = heapValueList.Count - 1;
-                heapValueList[deletedIndex] = heapValueList[lastIndex];
-                heapValueList.Remove(lastIndex);
-                Heapify();
-            }
-            else
-            {
-                throw new Exception("Empty Heap");
-            }
-        }
 
         public void Insert(int value)
         {
