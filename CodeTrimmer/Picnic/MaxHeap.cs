@@ -30,6 +30,7 @@ namespace Picnic
                 int lastIndex = heapValueList.Count - 1;
                 heapValueList[1] = heapValueList[lastIndex];
                 heapValueList.RemoveAt(lastIndex);
+                HeapifyDownward();
                 return value;
             }
             else
@@ -40,26 +41,84 @@ namespace Picnic
         public void Insert(int value)
         {
             heapValueList.Add(value);
-            Heapify();
+            HeapifyUpward();
         }
 
         // Start from bottom and move largest upward
-        protected void Heapify()
+        protected void HeapifyUpward()
         {
-            int parentIndex = heapValueList.Count / 2;
-            int currentIndex = heapValueList.Count - 1;
-            while (parentIndex >= 1)
+
+            int childIndex = heapValueList.Count - 1;
+
+            int parentIndex = childIndex / 2;
+            while (parentIndex >= 1 && heapValueList[parentIndex] < heapValueList[childIndex])
             {
-                if (heapValueList[currentIndex] > heapValueList[parentIndex])
-                {
-                    int tmp = heapValueList[parentIndex];
-                    heapValueList[parentIndex] = heapValueList[currentIndex];
-                    heapValueList[currentIndex] = tmp;
-                }
-                currentIndex = parentIndex;
-                parentIndex = currentIndex;
+                int tmp = heapValueList[parentIndex];
+                heapValueList[parentIndex] = heapValueList[childIndex];
+                heapValueList[childIndex] = tmp;
+                childIndex = parentIndex;
+                parentIndex = childIndex / 2;
+
             }
         }
 
+
+        protected void HeapifyDownward()
+        {
+
+            int parentIndex = 1;
+            int leftChild = parentIndex * 2;
+            int rightChild = leftChild + 1;
+            bool stop = false;
+            while (!stop)
+            {
+
+                int selectedIndex = 0;
+                if (rightChild >= heapValueList.Count)
+                {
+                    if (leftChild >= heapValueList.Count)
+                    {
+                        stop = true;
+                    }
+                    else
+                    {
+                        selectedIndex = leftChild;
+                    }
+
+                }
+                else
+                {
+                    if (heapValueList[leftChild] > heapValueList[rightChild])
+                    {
+                        selectedIndex = leftChild;
+                    }
+                    else
+                    {
+                        selectedIndex = rightChild;
+                    }
+
+                }
+                if (!stop && heapValueList[selectedIndex] > heapValueList[parentIndex])
+                {
+                    int tmp = heapValueList[parentIndex];
+                    heapValueList[parentIndex] = heapValueList[selectedIndex];
+                    heapValueList[selectedIndex] = tmp;
+                    parentIndex = selectedIndex;
+                    leftChild = parentIndex * 2;
+                    rightChild = leftChild + 1;
+                }
+                else
+                {
+                    stop = true;
+                }
+
+
+
+            }
+
+        }
+
     }
+
+
 }
