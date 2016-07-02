@@ -56,8 +56,13 @@
     <Compile Include="PicnicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KLargestSumTest.cs" />
+    <Compile Include="NextPowerofTwoTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6edc8704-245e-4f29-9df1-5469402365fe}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Picnic\Picnic.csproj">
       <Project>{466989d1-711c-4e39-81fe-41af66da2e40}</Project>
       <Name>Picnic</Name>

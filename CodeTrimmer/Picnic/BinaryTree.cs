@@ -48,7 +48,52 @@ namespace Picnic
                 return IsValidBST(root);
 
             }
-        
+        }
+
+        public Queue<string> SerializeTree()
+        {
+            Queue<string> serializeTree = new Queue<string>();
+            SerializeTree(root, serializeTree);
+            return serializeTree;
+        }
+   
+        public void DeserializeTree(Queue<string> serializeTree)
+        {
+            root = DeserializeTreeHelp(serializeTree);
+        }
+
+        protected TreeNode DeserializeTreeHelp(Queue<string> q)
+        {
+            string v = null;
+            if (q.Count > 0)
+                v = q.Dequeue();
+
+            if (v!=null && v != "#")
+            {
+                TreeNode newNode = new TreeNode();
+                newNode.Value = Convert.ToInt32(v);
+                newNode.Left = DeserializeTreeHelp(q);
+                newNode.Right = DeserializeTreeHelp(q);
+                return newNode;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+        protected void SerializeTree(TreeNode treeNode, Queue<string> serializeTree)
+        {
+            if (treeNode == null)
+            {
+                serializeTree.Enqueue("#");
+            }
+            else {
+                serializeTree.Enqueue(Convert.ToString(treeNode.Value));
+                SerializeTree(treeNode.Left, serializeTree);
+                SerializeTree(treeNode.Right, serializeTree);
+            }
+
         }
         protected bool IsValidBST(TreeNode treeNode)
         {
@@ -229,6 +274,7 @@ namespace Picnic
             else
             {
                 TreeNode newNode = new TreeNode();
+                newNode.Value = target;
                 Queue<TreeNode> q = new Queue<TreeNode>();
                 q.Enqueue(root);
                 while (q.Any())
