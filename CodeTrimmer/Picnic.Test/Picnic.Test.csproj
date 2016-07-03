@@ -58,6 +58,7 @@
     <Compile Include="KLargestSumTest.cs" />
     <Compile Include="NextPowerofTwoTest.cs" />
     <Compile Include="RemoveDuplicateArrayTest.cs" />
+    <Compile Include="PowerSetTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
