@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AVLTree.cs" />
     <Compile Include="Hanoi.cs" />
+    <Compile Include="InfixToPostFix.cs" />
     <Compile Include="IpAddressRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
