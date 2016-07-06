@@ -30,12 +30,13 @@ namespace Unleisure
                     {
                         stack.Pop();
                     }
+                    Stack<string> stackTemp = new Stack<string>();
                     foreach (var tempItem in tempList)
                     {
                         int value = Int32.MinValue;
                         if (!Int32.TryParse(tempItem, out value))
                         {
-                            stack.Push(tempItem);
+                            stackTemp.Push(tempItem);
                         }
 
                     }
@@ -44,9 +45,13 @@ namespace Unleisure
                         int value = Int32.MinValue;
                         if (Int32.TryParse(tempItem, out value))
                         {
-                            stack.Push(tempItem);
+                            stackTemp.Push(tempItem);
                         }
 
+                    }
+                    while (stackTemp.Count > 0)
+                    {
+                        posFix.Add(stackTemp.Pop());
                     }
 
                 }
