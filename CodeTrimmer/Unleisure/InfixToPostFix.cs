@@ -17,7 +17,7 @@ namespace Unleisure
             foreach (var item in inFix)
             {
                 var trimmedSpaceItem = item.Trim();
-
+                Stack<string> stackTmp = new Stack<string>();
                 if (trimmedSpaceItem.Equals(")"))
                 {
                     List<string> tempList = new List<string>();
@@ -35,7 +35,7 @@ namespace Unleisure
                         int value = Int32.MinValue;
                         if (!Int32.TryParse(tempItem, out value))
                         {
-                            stack.Push(tempItem);
+                            stackTmp.Push(tempItem);
                         }
 
                     }
@@ -44,9 +44,13 @@ namespace Unleisure
                         int value = Int32.MinValue;
                         if (Int32.TryParse(tempItem, out value))
                         {
-                            stack.Push(tempItem);
+                            stackTmp.Push(tempItem);
                         }
 
+                    }
+                    while (stackTmp.Count > 0)
+                    {
+                        posFix.Add(stackTmp.Pop());
                     }
 
                 }

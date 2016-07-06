@@ -25,8 +25,13 @@ namespace UnlesisureUnitTest
             List<string> inFix = new List<string>()
             { "(", "1", "+", "2", ")", "*", "3"};
             var infixToPostFix = new InfixToPostFix();
-            Console.WriteLine(String.Join(" " ,infixToPostFix.ConvertToPostFix(inFix)));
- 
+            List<string> postFix = infixToPostFix.ConvertToPostFix(inFix);
+            Console.WriteLine(String.Join(" " , infixToPostFix.Calculate(postFix)));
+
+            inFix = new List<string>()
+            { "(", "(", "(" , "1", "+","2",")","*","3",")","+","6",")","/","(","2","+","3",")"};
+            postFix = infixToPostFix.ConvertToPostFix(inFix);
+            Console.WriteLine(String.Join(" ", infixToPostFix.Calculate(postFix)));
         }
     }
 }
