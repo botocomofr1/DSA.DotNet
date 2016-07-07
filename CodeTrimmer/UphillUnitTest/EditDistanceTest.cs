@@ -8,7 +8,7 @@ namespace UphillUnitTest
     public class EditDistanceTest
     {
         [TestMethod]
-        public void SimpleTest()
+        public void EditDistSimpleTest()
         {
             var editDist = new EditDistance();
 
