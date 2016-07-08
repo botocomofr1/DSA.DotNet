@@ -55,6 +55,7 @@
     <Compile Include="EditDistanceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KnasackTest.cs" />
+    <Compile Include="RobCuttingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
