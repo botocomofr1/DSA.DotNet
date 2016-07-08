@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Uphill;
 
-namespace UphillUnitTest
+namespace Uphill
 {
     [TestClass]
     public class RobCuttingTest

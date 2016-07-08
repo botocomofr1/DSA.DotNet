@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoinChanging.cs" />
     <Compile Include="EditDistance.cs" />
     <Compile Include="KnasackBestValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
