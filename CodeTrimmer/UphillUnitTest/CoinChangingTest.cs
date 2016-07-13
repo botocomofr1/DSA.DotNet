@@ -20,7 +20,9 @@ namespace UphillUnitTest
         {
             List<int> possibleCoins = new List<int>() { 1, 5, 12, 25 };
             var coinChanging = new CoinChanging();
-            for(int cents = 0; cents <= 12; cents++)
+            //Console.WriteLine(string.Format("Cents {0} Min Coins {1}",
+            //       12, coinChanging.MinNumberOfCoins(12, possibleCoins)));
+            for (int cents = 0; cents <= 12; cents++)
             {
                 Console.WriteLine(string.Format("Cents {0} Min Coins {1}",
                     cents, coinChanging.MinNumberOfCoins(cents, possibleCoins)));
