@@ -30,10 +30,10 @@ namespace UphillUnitTest
             this.possibleCoins = possibleCoins;
             int result = Calculate(cents);
    
-            foreach(var key in lastUsedCoin.Keys)
-            {
-                Console.WriteLine(string.Format("Cent {0} Coin {1}", key, lastUsedCoin[key]));
-            }
+            //foreach(var key in lastUsedCoin.Keys)
+            //{
+            //    Console.WriteLine(string.Format("Cent {0} Coin {1}", key, lastUsedCoin[key]));
+            //}
             return result;
         }
 
