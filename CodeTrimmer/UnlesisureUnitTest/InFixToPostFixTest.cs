@@ -25,19 +25,13 @@ namespace UnlesisureUnitTest
             List<string> inFix = new List<string>()
             { "(", "1", "+", "2", ")", "*", "3"};
             var infixToPostFix = new InfixToPostFix();
-            Console.WriteLine(String.Join(" " ,infixToPostFix.ConvertToPostFix(inFix)));
-            Console.WriteLine(infixToPostFix.Calculate(infixToPostFix.ConvertToPostFix(inFix)));
+            List<string> postFix = infixToPostFix.ConvertToPostFix(inFix);
+            Console.WriteLine(String.Join(" " , infixToPostFix.Calculate(postFix)));
 
             inFix = new List<string>()
-            { "(", "1", "+", "2", ")"};
-            Console.WriteLine(String.Join(" ", infixToPostFix.ConvertToPostFix(inFix)));
-            Console.WriteLine(infixToPostFix.Calculate(infixToPostFix.ConvertToPostFix(inFix)));
-
-            inFix = new List<string>()
-            { "(", "(", "(", "1", "+","2",")","*","3",")","+","6",")","/","(","2","+","3", ")"};
-            Console.WriteLine(String.Join(" ", infixToPostFix.ConvertToPostFix(inFix)));
-            Console.WriteLine(infixToPostFix.Calculate(infixToPostFix.ConvertToPostFix(inFix)));
-
+            { "(", "(", "(" , "1", "+","2",")","*","3",")","+","6",")","/","(","2","+","3",")"};
+            postFix = infixToPostFix.ConvertToPostFix(inFix);
+            Console.WriteLine(String.Join(" ", infixToPostFix.Calculate(postFix)));
         }
     }
 }

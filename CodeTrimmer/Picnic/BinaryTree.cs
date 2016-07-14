@@ -62,18 +62,18 @@ namespace Picnic
             root = DeserializeTreeHelp(serializeTree);
         }
 
-        protected TreeNode DeserializeTreeHelp(Queue<string> q)
+        protected TreeNode DeserializeTreeHelp(Queue<string> queue)
         {
             string v = null;
-            if (q.Count > 0)
-                v = q.Dequeue();
+            if (queue.Count > 0)
+                v = queue.Dequeue();
 
             if (v!=null && v != "#")
             {
                 TreeNode newNode = new TreeNode();
                 newNode.Value = Convert.ToInt32(v);
-                newNode.Left = DeserializeTreeHelp(q);
-                newNode.Right = DeserializeTreeHelp(q);
+                newNode.Left = DeserializeTreeHelp(queue);
+                newNode.Right = DeserializeTreeHelp(queue);
                 return newNode;
 
             }
@@ -82,16 +82,16 @@ namespace Picnic
                 return null;
             }
         }
-        protected void SerializeTree(TreeNode treeNode, Queue<string> serializeTree)
+        protected void SerializeTree(TreeNode treeNode, Queue<string> queue)
         {
             if (treeNode == null)
             {
-                serializeTree.Enqueue("#");
+                queue.Enqueue("#");
             }
             else {
-                serializeTree.Enqueue(Convert.ToString(treeNode.Value));
-                SerializeTree(treeNode.Left, serializeTree);
-                SerializeTree(treeNode.Right, serializeTree);
+                queue.Enqueue(Convert.ToString(treeNode.Value));
+                SerializeTree(treeNode.Left, queue);
+                SerializeTree(treeNode.Right, queue);
             }
 
         }
