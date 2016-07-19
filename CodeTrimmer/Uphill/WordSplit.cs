@@ -49,7 +49,7 @@ namespace Uphill
                 for (int k = i; k < j; k++)
                 {
                     
-                    isSplitable= IsSplitable(i, k, splitableWord) && IsSplitable(k + 1, j, splitableWord);
+                    isSplitable= isSplitable || (IsSplitable(i, k, splitableWord) && IsSplitable(k + 1, j, splitableWord));
                 }
             }
           
