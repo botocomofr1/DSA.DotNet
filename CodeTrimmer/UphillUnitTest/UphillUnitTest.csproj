@@ -59,6 +59,7 @@
     <Compile Include="CoinChangingTest.cs" />
     <Compile Include="LongestComSeqTest.cs" />
     <Compile Include="LongestPalindromicTest.cs" />
+    <Compile Include="WordSplitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
