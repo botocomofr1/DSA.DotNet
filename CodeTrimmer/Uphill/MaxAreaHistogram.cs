@@ -18,22 +18,23 @@ namespace Uphill
 
             int size = histogram.Count;
 
-            int i = 1;
-            int index = 0;
-            while (index < size)
+            int right = 0;
+           
+            while (right < size)
             {
 
-                if (s.Count == 0 || histogram[index] > histogram[s.Peek()])
+                if (s.Count == 0 || histogram[right] > histogram[s.Peek()])
                 {
-                    s.Push(index);
-                    index++;
-                    i++;
+                    s.Push(right);
+                    right++;
+     
                 }
                 else
                 {
-                    int top = s.Pop();
-                    int area = histogram[top] * (s.Count == 0 ? i :( (i - top) - 1));
-                    Console.WriteLine(string.Format("(1)  Top: {0} H: {1} i: {2} Area {3}", top, histogram[top], i,area));
+                    int left = s.Pop();
+                    int width = (s.Count == 0 ? right : ((right - left) - 1));
+                    int area = histogram[left] * width;
+                    Console.WriteLine(string.Format("(1)  Left: {0}  Right: {2} Width {4}  Height: {1} Area {3}", left, histogram[left], right,area,width));
                     if (area > maxArea)
                         maxArea = area;
 
@@ -43,9 +44,10 @@ namespace Uphill
 
             while(s.Count > 0)
             {
-                int top = s.Pop();
-                int area = histogram[top] * (s.Count == 0 ? i : ((i - top) - 1));
-                Console.WriteLine(string.Format("(2)  Top: {0} H: {1} i: {2} Area {3}", top, histogram[top], i, area));
+                int left = s.Pop();
+                int width = (s.Count == 0 ? right : ((right - left) - 1));
+                int area = histogram[left] * width;
+                Console.WriteLine(string.Format("(2)  Left: {0}  Right: {2} Width {4}  Height: {1} Area {3}", left, histogram[left], right, area, width));
                 if (area > maxArea)
                     maxArea = area;
 
