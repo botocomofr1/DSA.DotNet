@@ -20,8 +20,8 @@ namespace UphillUnitTest
             List<int> hist = new List<int>() { 6,2,5,4,5,1,6};
             
             
-            Console.WriteLine(maxHistArea.MaxArea(new List<int>() { 10,2 }));
-            Console.WriteLine(maxHistArea.MaxArea(new List<int>() { 3, 2,1 }));
+           
+            Console.WriteLine(maxHistArea.MaxArea(new List<int>() { 6, 2, 5, 4, 5, 1, 6 }));
         }
     }
 }
