@@ -45,6 +45,7 @@
     <Compile Include="KnasackBestValue.cs" />
     <Compile Include="LongCommonSequence.cs" />
     <Compile Include="LongestPalindromic.cs" />
+    <Compile Include="MaxAreaHistogram.cs" />
     <Compile Include="MinMatrixOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobCutting.cs" />
