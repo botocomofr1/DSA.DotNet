@@ -8,6 +8,12 @@ namespace Uphill
 {
     public class MaxAreaHistogram
     {
+        // Use stack to track bar on the left is lower or equal to current
+
+        // Once see a bar is lower than the peek of the stack
+        // calculate area : 
+        // Height of bar = Histogram of top of stack
+        // width = current index - peek of stack   
         private Stack<int> s = new Stack<int>();
         public MaxAreaHistogram() { }
 
@@ -23,7 +29,7 @@ namespace Uphill
             while (right < size)
             {
 
-                if (s.Count == 0 || histogram[right] > histogram[s.Peek()])
+                if (s.Count == 0 ||  histogram[right]  >= histogram[s.Peek()])
                 {
                     s.Push(right);
                     right++;
@@ -31,27 +37,49 @@ namespace Uphill
                 }
                 else
                 {
-                    int left = s.Pop();
-                    int width = (s.Count == 0 ? right : ((right - left) - 1));
-                    int area = histogram[left] * width;
-                    Console.WriteLine(string.Format("(1)  Left: {0}  Right: {2} Width {4}  Height: {1} Area {3}", left, histogram[left], right,area,width));
-                    if (area > maxArea)
-                        maxArea = area;
+                    while (s.Count>0 && histogram[s.Peek()] > histogram[right])
+                    {
+                        int top = s.Pop();
+                    
+                        if (s.Count == 0)
+                        {
+                            int area = histogram[top]*right;
+                            if (area > maxArea)
+                                maxArea = area;
 
+                        }
+                        else
+                        {
+                            int area = histogram[top] * ((right - s.Peek())  -1);
+                            if (area > maxArea)
+                                maxArea = area;
+                        }
+                    }
                 }
 
             }
 
-            while(s.Count > 0)
+            while (s.Count > 0)
             {
-                int left = s.Pop();
-                int width = (s.Count == 0 ? right : ((right - left) - 1));
-                int area = histogram[left] * width;
-                Console.WriteLine(string.Format("(2)  Left: {0}  Right: {2} Width {4}  Height: {1} Area {3}", left, histogram[left], right, area, width));
-                if (area > maxArea)
-                    maxArea = area;
+                int top = s.Pop();
+                if (s.Count == 0)
+                {
+                    int area = histogram[top]*right;
+                    if (area > maxArea)
+                        maxArea = area;
+
+                }
+                else
+                {
+                    int area = histogram[top] * ((right - s.Peek()) -1);
+                    if (area > maxArea)
+                        maxArea = area;
+                }
 
             }
+         
+
+        
             return maxArea;
 
         }
