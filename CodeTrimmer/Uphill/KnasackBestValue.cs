@@ -37,7 +37,7 @@ namespace Uphill
             if (items[n - 1].Weight > weightLeftTobeFilled )
                 return BestDeal(n-1,weightLeftTobeFilled,  items);
 
-            int a = items[n-1].Value + BestDeal(n-1, weightLeftTobeFilled - items[n-n].Weight, items);
+            int a = items[n-1].Value + BestDeal(n-1, weightLeftTobeFilled - items[n-1].Weight, items);
 
             int b = BestDeal(n - 1, weightLeftTobeFilled, items );
             itemIndexValueMap[key] = Math.Max(a, b);
