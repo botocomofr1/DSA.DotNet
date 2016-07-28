@@ -17,45 +17,49 @@ namespace CakeProject
 
         public int BestTrade(List<int> prices)
         {
-         
+            int price;
             if (prices.Count <= 1)
                 return _globalMax;
             else
             {
                 _appleTradeMap = new Dictionary<Tuple<int, int>, int>();
-                int price = BestTrade(prices, 0, prices.Count - 1);
+                price = BestTrade(prices, 0, prices.Count - 1);
             
             }
-            return _globalMax;
+            return price;
         }
 
         protected int BestTrade(List<int> prices, int i, int j)
         {
-            if (i<0 || !(i < j))
-                return 0;
-          
-            Tuple<int,int> key = new Tuple<int, int>(i,j);
-            if (_appleTradeMap.ContainsKey(key))
-                return _appleTradeMap[key];
-
             int max = 0;
-          
-            int diff = prices[j] - prices[j-1];
-            if (diff > 0)
+            for (int k = 0; k < prices.Count-1; k++)
             {
-                int tmp = BestTrade(prices, j-2 , j-1) + diff;
-                max = Math.Max(max, tmp);
-               
-            }
-            else
-            {
-            
-                int tmp = BestTrade(prices, j - 2, j - 1);
-              
-            }
-            _globalMax = Math.Max(max, _globalMax);
-            _appleTradeMap[key] = max;
+                var current = new Tuple<int, int>(k, k + 1);
+                int diff = prices[k + 1] - prices[k];
+                if (diff >= 0)
+                {
+                    var previous = new Tuple<int,int>(k-1,k);
+                    if (_appleTradeMap.ContainsKey(previous))
+                    {
+                        int tmp = diff + _appleTradeMap[previous];
+                        max = Math.Max(tmp, max);
+                        _appleTradeMap[current] = tmp;
 
+                    }
+                    else
+                    {
+                        max = Math.Max(diff, max);
+                        _appleTradeMap[current] = diff;
+
+                    }
+
+                   
+
+                }
+
+
+
+            }
             return max;
         }
     }
