@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uphill", "Uphill\Uphill.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UphillUnitTest", "UphillUnitTest\UphillUnitTest.csproj", "{6A5E77AD-1E45-4E71-8A87-8B8DBAED11AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeProject", "CakeProject\CakeProject.csproj", "{4EB3E7B7-B06E-47E4-885B-533F3E3AA967}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeProjectTest", "CakeProjectTest\CakeProjectTest.csproj", "{87F4279C-1803-4007-8B10-FE99B751ACB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{6A5E77AD-1E45-4E71-8A87-8B8DBAED11AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A5E77AD-1E45-4E71-8A87-8B8DBAED11AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A5E77AD-1E45-4E71-8A87-8B8DBAED11AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB3E7B7-B06E-47E4-885B-533F3E3AA967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB3E7B7-B06E-47E4-885B-533F3E3AA967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB3E7B7-B06E-47E4-885B-533F3E3AA967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB3E7B7-B06E-47E4-885B-533F3E3AA967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F4279C-1803-4007-8B10-FE99B751ACB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F4279C-1803-4007-8B10-FE99B751ACB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F4279C-1803-4007-8B10-FE99B751ACB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F4279C-1803-4007-8B10-FE99B751ACB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
